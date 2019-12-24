@@ -1,0 +1,27 @@
+/**
+ * 处理价格wxs
+ */
+/**
+ * 主价格
+ */
+function mainPrice(price, discountPrice) {
+    if (!discountPrice) {
+        return price;
+    }
+    return discountPrice;
+}
+
+/**
+ * 下划线价格
+ */
+function slashedPrice(price, discountPrice) {
+    if (!discountPrice) {
+        return;
+    }
+    return price;
+}
+
+module.exports = {
+    mainPrice: mainPrice,
+    slashedPrice: slashedPrice
+}

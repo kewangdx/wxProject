@@ -1,0 +1,40 @@
+<!--pages/home/home.wxml-->
+<l-loadmore show end-text="已经到底啦~" type="{{loadingType}}">
+<view slot="content" class="container">
+    <!-- 首页第一部分 ： 顶部优惠入口 -->
+    <image class="top-theme" src="{{themeA.entrance_img}}" />
+
+    <!-- 首页第二部分 ： 轮播图 -->
+    <swiper class="swiper" indicator-dots="true" indicator-active-color="#157658" autoplay="true" circular="true">
+        <block wx:for="{{bannerB.items}}" wx:key="key" >
+            <swiper-item>
+                <image class="swiper" src="{{item.img}}" />
+            </swiper-item>
+        </block>
+    </swiper>
+
+    <!-- 首页第三部分 ： 六宫格 -->
+    <s-category-grid grid="{{grid}}" />
+
+    <!-- 首页第四部分 ： 六宫格 -->
+    <image class="activity" src="{{activityD.entrance_img}}"></image>
+
+    <!-- 首页第五部分 ： Spu展示 -->
+    <s-spu-scroll l-class="spu-scroll" wx:if="{{themeE.online}}" theme="{{themeE}}" spu-list="{{themeESpu}}"></s-spu-scroll>
+
+    <!-- 首页第六部分 ：  -->
+    <image class="quality" src="{{themeF.entrance_img}}"></image>
+    
+    <!-- 首页第七部分 ：  -->
+    <s-hot-list banner="{{bannerG}}" />
+
+    <!-- 首页第八部分 ：  -->
+    <image class="fashion" src="{{themeH.entrance_img}}"></image>
+
+    <!-- 首页第九部分 ： 瀑布流 -->
+    <view class="spu-bottom">
+        <image class="title-spu-bottom" src="/imgs/home/title@interest.png"></image>
+        <l-water-flow generic:l-water-flow-item="s-spu-preview" />
+    </view>
+</view>
+</l-loadmore>
