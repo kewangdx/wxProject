@@ -10,7 +10,8 @@
                 <view class="spu-container">
                     <image class="spu-img" src="{{item.img}}"></image>
                     <text class="spu-text">{{item.title.length>=8?formatStr.formatStr(item.title):item.title}}</text>
-                    <l-price l-unit-class="price-unit" l-value-class="price-value" color="#157658" value="{{p.mainPrice(item.price,item.discount_price)}}"></l-price>
+                    <l-price l-unit-class="price-unit" l-value-class="price-value" color="#157658" 
+                        value="{{p.mainPrice(item.price,item.discount_price)}}"></l-price>
                 </view>
             </block>
         </view>
