@@ -1,0 +1,9 @@
+<!--components/fance/inde.wxml-->
+<view>
+    <view class="title">{{fence.title}}</view>
+    <view>
+        <block wx:for="{{fence.cells}}" wx:key="{{index}}">
+            <s-cell cell="{{item}}" />
+        </block>
+    </view>
+</view>

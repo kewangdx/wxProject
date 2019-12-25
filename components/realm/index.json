@@ -1,6 +1,6 @@
 {
     "component": true,
     "usingComponents": {
-        "s-fance": "/components/fence/index"
+        "s-fence": "/components/fence/index"
     }
 }
