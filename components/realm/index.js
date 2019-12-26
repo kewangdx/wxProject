@@ -1,6 +1,7 @@
 // components/realm/index.js
 
 import { FenceGroup } from "../models/fence-group.js";
+import { Judger } from "../models/judger.js";
 Component({
     /**
      * 组件的属性列表
@@ -23,6 +24,7 @@ Component({
             }
             const fenceGroup = new FenceGroup(spu);
             fenceGroup.initFences();
+            const judger = new Judger(fenceGroup);
             this.bindInitData(fenceGroup);
         }
     },
