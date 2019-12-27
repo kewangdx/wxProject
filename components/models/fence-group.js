@@ -7,7 +7,7 @@ class FenceGroup{
     fences = [];
 
     constructor(spu){
-        this.sup = spu;
+        this.spu = spu;
         this.skuList = spu.sku_list;
 
     }

@@ -22,7 +22,10 @@ Component({
             // 父组件向子组件传参 properties
             // 子组件向父组件传参 需要用到事件
             this.triggerEvent('cellTap', {
-
+                cell: this.properties.cell
+            },{
+                bubbles: true,
+                composed: true
             });
         }
     }

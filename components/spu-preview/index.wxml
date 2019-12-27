@@ -3,7 +3,7 @@
 
 <view data-pid="{{data.id}}" bindtap="onItemTap" class="container">
     <!-- <image style="width:{{w}}; height:{{h}}" bindload="onImageLoad" mode="widthFix" class="img" src="{{data.img}}"></image> -->
-    <image style="width:{{w}}rpx; height:{{h}}rpx" bindload="onImageLoad"src="{{data.img}}"></image>
+    <image style="width:{{w}}rpx; height:{{h}}rpx" bindload="onImageLoad" src="{{data.img}}"></image>
     <view class="content-container">
         <text class="title">{{data.title}}</text>
         <view class="tags">

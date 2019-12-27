@@ -1,8 +1,10 @@
 
+import { CellStatus } from "../../core/enum.js";
 class Cell{
 
     title;
     id;
+    status = CellStatus.WATTING;
 
     constructor(spec){
         this.title = spec.value;
