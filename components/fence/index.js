@@ -4,8 +4,8 @@ Component({
      * 组件的属性列表
      */
     properties: {
-        fence: Object
-        
+        fence: Object,
+        x: Number
     },
 
     /**
@@ -13,12 +13,6 @@ Component({
      */
     data: {
 
-    },
-
-    observers: {
-        'fence': function(fence){
-            
-        }
     },
 
     /**

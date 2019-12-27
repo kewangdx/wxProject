@@ -1,35 +1,38 @@
-
-import { SkuCode } from "../models/sku-code.js";
-import { CellStatus } from "../../core/enum.js";
-class Judger{
+import {
+    SkuCode
+} from "../models/sku-code.js";
+import {
+    CellStatus
+} from "../../core/enum.js";
+class Judger {
 
     fenceGroup;
     pathDict = [];
 
-    constructor(fenceGroup){
+    constructor(fenceGroup) {
         this.fenceGroup = fenceGroup;
         this.initPathDict();
     }
 
-    initPathDict(){
+    initPathDict() {
         console.log(this.fenceGroup);
         this.fenceGroup.spu.sku_list.forEach(s => {
             const skuCode = new SkuCode(s.code);
             this.pathDict = this.pathDict.concat(skuCode.totalSegments);
         });
-        console.log(this.pathDict);
     }
 
-    judge(cell){
-        this._changeCellStatus(cell); 
+    judge(cell, x, y) {
+        this._changeCellStatus(cell, x, y);
     }
 
-    _changeCellStatus(cell){
-        console.log(cell);
-        if (cell.status === CellStatus.SELECTED){
-            cell.status = CellStatus.WATTING;
-        }else if (cell.status === CellStatus.WATTING){
-            cell.status = CellStatus.SELECTED;
+    _changeCellStatus(cell, x, y) {
+        if (cell.status === CellStatus.SELECTED) {
+            // cell.status = CellStatus.WATTING;
+            this.fenceGroup.fences[x].cells[y].status = CellStatus.WATTING;
+        } else if (cell.status === CellStatus.WATTING) {
+            this.fenceGroup.fences[x].cells[y].status = CellStatus.SELECTED;
+            // cell.status = CellStatus.SELECTED;
         }
     }
 }

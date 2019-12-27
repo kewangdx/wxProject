@@ -4,7 +4,9 @@ Component({
      * 组件的属性列表
      */
     properties: {
-        cell: Object
+        cell: Object,
+        y: Number,
+        x: Number
     },
 
     /**
@@ -22,7 +24,9 @@ Component({
             // 父组件向子组件传参 properties
             // 子组件向父组件传参 需要用到事件
             this.triggerEvent('cellTap', {
-                cell: this.properties.cell
+                cell: this.properties.cell,
+                x: this.properties.x,
+                y: this.properties.y
             },{
                 bubbles: true,
                 composed: true

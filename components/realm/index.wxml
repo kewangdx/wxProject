@@ -5,8 +5,8 @@
         <image src="{{}}"></image>
     </view>
     <!-- sku列表 -->
-    <block wx:for="{{fences}}" wx:key="{{index}}">
-        <s-fence data-x="{{index}}" bind:cellTap="onCellTap" fence="{{item}}"></s-fence>
+    <block wx:for="{{fences}}" wx:key="key" >
+        <s-fence x="{{index}}" bind:cellTap="onCellTap" fence="{{item}}"></s-fence>
     </block>
 
     <!-- 数量选择 -->
