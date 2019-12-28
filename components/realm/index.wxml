@@ -1,11 +1,33 @@
 <!--components/realm/index.wxml-->
-
+<wxs src="../../wxs/price.wxs" module="p"></wxs>
 <view class="container">
-    <view>
-        <image src="{{}}"></image>
+    <view class="sku-preview">
+        <image class="sku-img" src="{{previewImg}}"></image>
+        <view class="sku-description">
+            <text class="title">{{title}}</text>
+            <view>
+                <view class="price-row">
+                    <l-price value="{{p.mainPrice(price,discountPrice)}}" 
+                        color="#157658" value-size="28" unit-size="20" autofix />
+                    <l-price wx:if="{{discountPrice?true:false}}" 
+                        deleted value="{{p.slashedPrice(price,discountPrice)}}" 
+                        color="#999999" value-size="26" l-class="discount-price" />
+                
+                    <view wx:if="{{stock && stock >= 10}}" class="stock">库存：{{stock}} 件</view>
+                    <view wx:if="{{stock && stock < 10 && stock != 0}}" class="stock-pinch">仅剩：{{stock}} 件</view>
+                </view>
+
+                <view class="sku-pending">
+                    <text>请选择：</text>
+                </view>
+            </view>
+        </view>
     </view>
+
+    <view class="hr"></view>
+
     <!-- sku列表 -->
-    <block wx:for="{{fences}}" wx:key="key" >
+    <block wx:for="{{fences}}" wx:key="key">
         <s-fence x="{{index}}" bind:cellTap="onCellTap" fence="{{item}}"></s-fence>
     </block>
 

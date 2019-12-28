@@ -2,6 +2,7 @@
 
 import { FenceGroup } from "../models/fence-group.js";
 import { Judger } from "../models/judger.js";
+import { Spu } from "../../model/spu.js";
 Component({
     /**
      * 组件的属性列表
@@ -14,7 +15,9 @@ Component({
      * 组件的初始数据
      */
     data: {
-        judger: Object
+        judger: Object,
+        previewImg: String,
+        title: String
     },
 
     observers: {
@@ -22,10 +25,23 @@ Component({
             if(!spu){
                 return;
             }
+            if(Spu.isNoSpec(spu)){
+                this.setData({
+                    noSpec: true
+                })
+                this.bindSkuData(spu.sku_list[0]);
+            }
             const fenceGroup = new FenceGroup(spu);
             fenceGroup.initFences();
             const judger = new Judger(fenceGroup);
             this.data.judger = judger;
+
+            const defaultSku = fenceGroup.getDefaultSku();
+            if(defaultSku){
+                this.bindSkuData(defaultSku);
+            }else{
+                this.bindSpuData();
+            }
             this.bindInitData(fenceGroup);
         }
     },
@@ -35,10 +51,28 @@ Component({
     methods: {
         bindInitData(fenceGroup){
             this.setData({
-                fences: fenceGroup.fences
+                fences: fenceGroup.fences,
+                isSkuIntact: this.data.judger.isSkuIntact()
             })
         },
-
+        bindSpuData(){
+            const spu = this.properties.spu
+            this.setData({
+                previewImg: spu.img,
+                title: spu.title,
+                price: spu.price,
+                discountPrice: spu.discount_price
+            })
+        },
+        bindSkuData(sku){
+            this.setData({
+                previewImg: sku.img,
+                title: sku.title,
+                price: sku.price,
+                discountPrice: sku.discount_price,
+                stock: sku.stock
+            })
+        },
         onCellTap(event){
             const cell = event.detail.cell;
             const x = event.detail.x;

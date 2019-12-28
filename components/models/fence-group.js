@@ -24,6 +24,35 @@ class FenceGroup{
         this.fences = fences;
     }
 
+    eachCell(cb){
+        for(let i = 0; i < this.fences.length; i++){
+            for(let j = 0; j < this.fences[i].cells.length; j++){
+                const cell = this.fences[i].cells[j];
+                cb(cell, i, j);
+            }
+        }
+        
+    }
+
+    getDefaultSku(){
+        const defaultSkuId = this.spu.default_sku_id;
+        if(!defaultSkuId){
+            return;
+        }
+        return this.skuList.find(s => s.id === defaultSkuId);
+    }
+
+    setCellStatusById(cellId, status) {
+        this.eachCell(cell => {
+            if(cell.id === cellId){
+                cell.status = status
+            }
+        })
+    }
+
+    setCellStatusByXY(x, y, status) {
+        this.fences[x].cells[y].status = status;
+    }
     _createMatrix(skuList){
         const m = [];
         skuList.forEach(sku => {

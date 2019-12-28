@@ -15,7 +15,8 @@
         <view class="price-row">
             <l-price value="{{p.mainPrice(data.price,data.discount_price)}}" 
                 color="#157658" value-size="28" unit-size="20" autofix />
-            <l-price wx:if="{{data.discount_price?true:false}}" deleted value="{{p.slashedPrice(data.price,data.discount_price)}}" 
+            <l-price wx:if="{{data.discount_price?true:false}}" 
+                deleted value="{{p.slashedPrice(data.price,data.discount_price)}}" 
                 color="#999999" size="26" l-class="discount-price" />
         </view>
         <text class="subtitle">{{data.subtitle}}</text>
