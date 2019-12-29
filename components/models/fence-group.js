@@ -53,6 +53,13 @@ class FenceGroup{
     setCellStatusByXY(x, y, status) {
         this.fences[x].cells[y].status = status;
     }
+
+    getSku(skuCode){
+        const fullSkuCode = this.spu.id + '$' + skuCode;
+        const sku = this.spu.sku_list.find(s => s.code === fullSkuCode);
+        return sku ? sku : null;
+    }
+
     _createMatrix(skuList){
         const m = [];
         skuList.forEach(sku => {

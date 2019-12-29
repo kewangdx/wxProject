@@ -1,6 +1,9 @@
 import {
     Cell
 } from "../models/cell.js";
+import {
+    Joiner
+} from "../../utils/joiner.js";
 class SkuPending{
 
     pending = [];
@@ -30,6 +33,38 @@ class SkuPending{
             }
         }
         return true;
+    }
+
+    getSkuCode(){
+        const joiner = new Joiner('#');
+        this.pending.forEach(cell =>{
+            const cellCode = cell.getCellCode();
+            joiner.join(cellCode);
+        });
+        return joiner.getStr();
+    }
+
+    /**
+     * 获取当前已选择规格值
+     */
+    getCurrentSpecValues(){
+        const values = this.pending.map(cell => {
+            return cell ? cell.spec.value : null;
+        });
+        return values;
+    }
+
+    /**
+     * 获取为选择规格值
+     */
+    getMissingSpecKeysIndex(){
+        const keysIndex = [];
+        for(let i = 0; i < this.size; i++){
+            if(!this.pending[i]){
+                keysIndex.push(i);
+            }
+        }
+        return keysIndex;
     }
 
     _isEmptyPart(index){

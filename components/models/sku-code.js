@@ -14,7 +14,6 @@ class SkuCode{
 
     _splitToSegment(){
         // 2$1-44#3-9#4-14
-        console.log(this.code);
         const spuAndSpec = this.code.split('$');
         this.spuId = spuAndSpec[0];
         const specCodeArray = spuAndSpec[1].split('#');

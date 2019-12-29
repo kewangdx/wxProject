@@ -59,3 +59,45 @@
     font-size: 20rpx;
     color: #D20109;
 }
+
+.sku-pending > text:first-child{
+    color: #999;
+}
+
+.sku-pending > text:nth-child(2){
+    color: #666;
+}
+
+.counter-container{
+    margin-top: 34rpx;
+    margin-bottom: 200rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.counter-container text{
+    color: #555;
+    font-size: 24rpx;
+}
+
+.bottom-btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100rpx;
+    background-color: #333;
+    position: absolute;
+    bottom: 0rpx;
+}
+
+.out-stock{
+    background-color: #DCEBE6;
+}
+
+.bottom-btn text{
+    color: #fff;
+}
