@@ -1,3 +1,4 @@
 <!--pages/detail/detail.wxml-->
-<s-realm spu="{{spu}}" /> 
+<!-- <s-realm spu="{{spu}}" />  -->
 
+<s-tabbar />

@@ -4,6 +4,7 @@ import { FenceGroup } from "../models/fence-group.js";
 import { Judger } from "../models/judger.js";
 import { Spu } from "../../model/spu.js";
 import { Cell } from "../models/cell.js";
+import { Cart } from "../models/cart.js";
 Component({
     /**
      * 组件的属性列表
@@ -19,7 +20,7 @@ Component({
         judger: Object,
         previewImg: String,
         title: String,
-        currentSkuCount: Number
+        currentSkuCount: Cart.SKU_MIN_COUNT
     },
 
     observers: {
@@ -45,6 +46,7 @@ Component({
                 noSpec: true
             })
             this.bindSkuData(spu.sku_list[0]);
+            this.setStockStatus(spu.sku_list[0].stock, this.data.currentSkuCount);
             
         },
 
@@ -57,6 +59,7 @@ Component({
             const defaultSku = fenceGroup.getDefaultSku();
             if (defaultSku) {
                 this.bindSkuData(defaultSku);
+                this.setStockStatus(defaultSku.stock, this.data.currentSkuCount);
             } else {
                 this.bindSpuData();
             }
