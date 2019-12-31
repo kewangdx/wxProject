@@ -1,4 +1,10 @@
 <!--pages/detail/detail.wxml-->
-<!-- <s-realm spu="{{spu}}" />  -->
+<l-popup show="{{showRealm}}" content-align="bottom">
+    <s-realm order-way="{{orderWay}}" spu="{{spu}}" /> 
+</l-popup>
 
-<s-tabbar />
+<s-tabbar class="tabbar" bind:gotoHome="onGoToHome" 
+    bind:goToCart="onGoToCart"
+    bind:addToCart="onAddToCart"
+    bind:buy="onBuy"
+     />

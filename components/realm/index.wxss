@@ -2,10 +2,15 @@
 
 .container{
     box-sizing: border-box;
-    padding: 30rpx;
     background-color: #fff;
+    max-height: 1000rpx;
+    min-height: 650rpx;
+    margin-bottom: 100rpx;
 }
 
+.inner-container{
+    padding: 30rpx 30rpx 0rpx 30rpx;
+}
 .sku-preview{
     display: flex;
     flex-direction: row;
@@ -70,7 +75,7 @@
 
 .counter-container{
     margin-top: 34rpx;
-    margin-bottom: 200rpx;
+    padding-bottom: 200rpx;
     display: flex;
     flex-direction: row;
     align-items: center;

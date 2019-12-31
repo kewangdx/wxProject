@@ -6,6 +6,12 @@ const CellStatus = {
     WATTING: 'watting'
 }
 
+const ShoppingWay = {
+    CART: 'cart',
+    BUY: 'buy'
+}
+
 export {
-    CellStatus
+    CellStatus,
+    ShoppingWay
 }
