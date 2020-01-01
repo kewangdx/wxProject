@@ -11,7 +11,7 @@ export class Paging{
     moreData = true;
     accumulator= [];
 
-    constructor(req, start, count){
+    constructor(req, start = 0, count = 10){
         this.start = start;
         this.count = count;
         this.req = req;

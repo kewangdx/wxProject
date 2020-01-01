@@ -2,6 +2,7 @@
 
 .sleeve{
     font-family: sleeve !important;
+    color:#157658 !important;
 }
 
 .container{

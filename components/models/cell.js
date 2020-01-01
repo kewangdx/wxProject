@@ -6,6 +6,7 @@ class Cell{
     id;
     status = CellStatus.WATTING;
     spec;
+    skuImg;
 
     constructor(spec){
         this.title = spec.value;

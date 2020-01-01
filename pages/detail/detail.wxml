@@ -1,10 +1,41 @@
 <!--pages/detail/detail.wxml-->
+
+<scroll-view style="height:{{h}}rpx;" scroll-y>
+    <swiper class="top" autoplay="true" indicator-dots="true">
+        <block wx:for="{{spu.spu_img_list}}" wx:key="key">
+            <swiper-item>
+                <image class="top" mode="aspectFill" src="{{item.img}}"></image>
+            </swiper-item>
+        </block>
+    </swiper>
+
+    <s-spu-description spu="{{spu}}"></s-spu-description>
+
+    <view bindtap="onAddToCart" wx:if="{{!specs.noSpec}}" class="sku-pending" >
+        <view class="specs">
+            <text wx:if="{{!specs.skuIntact}}">请选择：</text>
+            <text wx:if="{{!specs.skuIntact}}">{{specs.missingKeys}}</text>
+            <text wx:if="{{specs.skuIntact}}">已选：</text>
+            <text wx:if="{{specs.skuIntact}}">{{specs.currentValues}}</text>
+        </view>
+        <view class="arrow-right">
+            <l-icon name="right" color="#157658" size="24" />
+        </view>
+    </view>
+
+    <view class="explain">
+        <s-sale-explain texts="{{explain}}" />
+    </view>
+
+    <view class="detail-img-container">
+        <block wx:for="{{spu.spu_detail_img_list}}" wx:key="key">
+            <image mode="widthFix" class="detail-img" src="{{item.img}}"></image>
+        </block>
+    </view>
+</scroll-view>
+
 <l-popup show="{{showRealm}}" content-align="bottom">
-    <s-realm order-way="{{orderWay}}" spu="{{spu}}" /> 
+    <s-realm bind:specChange="onSpecChange" order-way="{{orderWay}}" spu="{{spu}}" />
 </l-popup>
 
-<s-tabbar class="tabbar" bind:gotoHome="onGoToHome" 
-    bind:goToCart="onGoToCart"
-    bind:addToCart="onAddToCart"
-    bind:buy="onBuy"
-     />
+<s-tabbar class="tabbar" bind:gotoHome="onGoToHome" bind:goToCart="onGoToCart" bind:addToCart="onAddToCart" bind:buy="onBuy" />

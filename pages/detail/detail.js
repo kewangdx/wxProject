@@ -6,6 +6,10 @@ import {
 import {
     ShoppingWay
 } from "../../core/enum.js";
+import {
+    SaleExplain
+} from "../../model/sale-explain.js";
+import { getWindowHeightRpx } from "../../utils/system.js"
 Page({
 
     /**
@@ -21,20 +25,24 @@ Page({
     onLoad: async function (options) {
         const pid = options.pid;
         const spu = await Spu.getDetail(pid);
+
+        const explain = await SaleExplain.getFixed();
+        const windowHeight = await getWindowHeightRpx();
+        const scrollHeight = windowHeight - 100;
         this.setData({
-            spu
+            spu,
+            explain,
+            h: scrollHeight
         });
     },
 
     onGoToHome(event){
-        console.log("0000000");
         wx.switchTab({
             url: '/pages/home/home',
         });
     },
 
     onGoToCart(event) {
-        console.log("111111");
         wx.switchTab({
             url: '/pages/cart/cart',
         });
@@ -51,7 +59,11 @@ Page({
             orderWay: ShoppingWay.BUY   
         })
     },
-
+    onSpecChange(event){
+        this.setData({
+            specs: event.detail
+        });
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
